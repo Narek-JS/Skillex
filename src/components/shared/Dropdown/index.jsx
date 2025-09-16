@@ -31,7 +31,10 @@ function Dropdown({
     options.find((o) => o.value === selectedValue)?.label || placeholder;
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-[270px]">
+    <div
+      ref={containerRef}
+      className="relative w-full md:max-w-[270px] max-w-full"
+    >
       <button
         type="button"
         className="flex items-center justify-between w-full h-[38px] rounded-md  border-gray-300 bg-transparent pl-3 pr-3 shadow-sm sm:text-sm cursor-pointer"
