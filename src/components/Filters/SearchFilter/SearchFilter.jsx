@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchIcon } from "../Icons";
+import { SearchIcon } from "../../Icons";
 
 function SearchFilter({ searchTerm, onSearchChange }) {
   return (
@@ -18,4 +18,4 @@ function SearchFilter({ searchTerm, onSearchChange }) {
   );
 }
 
-export default SearchFilter;
+export { SearchFilter };

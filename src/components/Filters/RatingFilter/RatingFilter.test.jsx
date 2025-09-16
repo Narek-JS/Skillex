@@ -1,9 +1,7 @@
-// src/components/RatingFilter/RatingFilter.test.jsx
-
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
-import RatingFilter from "./RatingFilter.jsx";
+import { RatingFilter } from "./RatingFilter.jsx";
+import userEvent from "@testing-library/user-event";
 
 describe("RatingFilter component", () => {
   it("should render stars and handle rating selection", async () => {

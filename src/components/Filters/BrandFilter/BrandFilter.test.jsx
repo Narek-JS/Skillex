@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
-import BrandFilter from "./BrandFilter.jsx";
+import { BrandFilter } from "./BrandFilter.jsx";
+import userEvent from "@testing-library/user-event";
 
 describe("BrandFilter component", () => {
   it("should render brands and handle selection", async () => {

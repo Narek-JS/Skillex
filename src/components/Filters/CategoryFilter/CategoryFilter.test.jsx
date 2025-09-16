@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
+import { CategoryFilter } from "./CategoryFilter.jsx";
 import { describe, it, expect, vi } from "vitest";
 
 import userEvent from "@testing-library/user-event";
-import CategoryFilter from "./CategoryFilter.jsx";
 
 describe("CategoryFilter component", () => {
   it("should render categories and handle selection", async () => {

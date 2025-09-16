@@ -30,9 +30,9 @@ describe("FilterSidebar component", () => {
     render(<FilterSidebar {...props} />);
 
     // Assert
-    expect(screen.getByText("Category Filter")).toBeInTheDocument();
-    expect(screen.getByText("Brand Filter")).toBeInTheDocument();
-    expect(screen.getByText("Price Range Filter")).toBeInTheDocument();
-    expect(screen.getByText("Rating Filter")).toBeInTheDocument();
+    expect(screen.getByText("Category")).toBeInTheDocument();
+    expect(screen.getByText("Brand")).toBeInTheDocument();
+    expect(screen.getByText("Price Range")).toBeInTheDocument();
+    expect(screen.getByText("Rating")).toBeInTheDocument();
   });
 });

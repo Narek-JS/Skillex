@@ -26,4 +26,4 @@ function CategoryFilter({ categories, selectedCategories, onCategoryChange }) {
   );
 }
 
-export default CategoryFilter;
+export { CategoryFilter };

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import { PriceRangeFilter } from "./PriceRangeFilter.jsx";
 import { describe, it, expect, vi } from "vitest";
-import PriceRangeFilter from "./PriceRangeFilter.jsx";
 
 vi.mock("rc-slider", () => ({
   default: ({ value, onChange }) => (

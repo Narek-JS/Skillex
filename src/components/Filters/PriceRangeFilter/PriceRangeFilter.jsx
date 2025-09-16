@@ -31,4 +31,4 @@ function PriceRangeFilter({ min, max, value, onPriceChange }) {
   );
 }
 
-export default PriceRangeFilter;
+export { PriceRangeFilter };

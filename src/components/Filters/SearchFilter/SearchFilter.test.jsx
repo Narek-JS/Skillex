@@ -1,6 +1,6 @@
-import { describe, test, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import SearchFilter from "./SearchFilter";
+import { describe, test, expect, vi } from "vitest";
+import { SearchFilter } from "./SearchFilter";
 
 describe("SearchFilter", () => {
   test("renders the input and responds to user typing", () => {

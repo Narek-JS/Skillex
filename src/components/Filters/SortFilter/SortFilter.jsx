@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown } from "../shared";
+import { Dropdown } from "../../shared";
 
 const sortOptions = [
   { value: "rating", label: "Rating" },
@@ -22,4 +22,4 @@ function SortFilter({ sortOption, onSortChange }) {
   );
 }
 
-export default SortFilter;
+export { SortFilter };

@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
+import { SearchFilter, SortFilter } from "./components/Filters";
 import { data as products } from "./data/mockData";
 import { useDebounce } from "./hooks/useDebounce";
 import { filterAndSortProducts } from "./utils";
+import { useState, useMemo } from "react";
 import FilterSidebar from "./components/FilterSidebar/FilterSidebar";
 import ProductList from "./components/ProductList/ProductList";
-import SearchFilter from "./components/SearchFilter/SearchFilter";
-import SortFilter from "./components/SortFilter/SortFilter";
 
 function App() {
   const initialMaxPrice = Math.ceil(Math.max(...products.map((p) => p.price)));

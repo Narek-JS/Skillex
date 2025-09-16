@@ -1,5 +1,5 @@
 import React from "react";
-import { StarIcon } from "../Icons";
+import { StarIcon } from "../../Icons";
 
 function RatingFilter({ currentRating, onRatingChange }) {
   const stars = [1, 2, 3, 4, 5];
@@ -29,4 +29,4 @@ function RatingFilter({ currentRating, onRatingChange }) {
   );
 }
 
-export default RatingFilter;
+export { RatingFilter };

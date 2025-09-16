@@ -26,4 +26,4 @@ function BrandFilter({ brands, selectedBrands, onBrandChange }) {
   );
 }
 
-export default BrandFilter;
+export { BrandFilter };

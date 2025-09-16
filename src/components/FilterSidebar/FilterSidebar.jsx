@@ -1,8 +1,10 @@
 import React from "react";
-import CategoryFilter from "../CategoryFilter/CategoryFilter";
-import BrandFilter from "../BrandFilter/BrandFilter";
-import PriceRangeFilter from "../PriceRangeFilter/PriceRangeFilter";
-import RatingFilter from "../RatingFilter/RatingFilter";
+import {
+  PriceRangeFilter,
+  CategoryFilter,
+  RatingFilter,
+  BrandFilter,
+} from "../Filters";
 
 function FilterSidebar({ filters, filterOptions, onFilterChange }) {
   return (
