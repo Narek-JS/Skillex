@@ -1,1 +1,2 @@
-export { StarIcon } from "./Icon/StarIcon";
+export { StarIcon } from "./StarIcon";
+export { SearchIcon } from "./SearchIcon";

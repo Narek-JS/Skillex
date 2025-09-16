@@ -1,12 +1,38 @@
-export function filterProducts(products, filters) {
-  return products.filter((p) => {
-    const { category, brand, priceRange, rating } = filters;
+const Sorters = {
+  priceLowToHigh: (a, b) => a.price - b.price,
+  priceHighToLow: (a, b) => b.price - a.price,
+  rating: (a, b) => b.rating - a.rating,
+};
 
-    if (category.length > 0 && !category.includes(p.category)) return false;
-    if (p.price < priceRange[0] || p.price > priceRange[1]) return false;
-    if (brand.length > 0 && !brand.includes(p.brand)) return false;
-    if (rating > 0 && p.rating < rating) return false;
+export function filterAndSortProducts(
+  products,
+  filters,
+  searchTerm = "",
+  sortOption = ""
+) {
+  const { category, brand, priceRange, rating } = filters;
 
-    return true;
+  const filtered = products.filter((product) => {
+    const searchMatch = product.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    const categoryMatch =
+      !category?.length || category.includes(product.category);
+
+    const brandMatch = !brand?.length || brand.includes(product.brand);
+
+    const priceMatch =
+      product.price >= priceRange[0] && product.price <= priceRange[1];
+
+    const ratingMatch = !rating || product.rating >= rating;
+
+    return (
+      searchMatch && categoryMatch && brandMatch && priceMatch && ratingMatch
+    );
   });
+
+  const sortFunction = Sorters[sortOption];
+
+  return sortFunction ? [...filtered].sort(sortFunction) : filtered;
 }

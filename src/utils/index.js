@@ -1,1 +1,1 @@
-export { filterProducts } from "./filterUtils/filterUtils";
+export { filterAndSortProducts } from "./filterUtils/filterUtils";

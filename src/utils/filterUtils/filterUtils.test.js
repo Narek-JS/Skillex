@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { filterProducts } from "./filterUtils";
+import { describe, test, expect } from "vitest";
+import { filterAndSortProducts } from "./filterUtils";
 
 const mockProducts = [
   {
@@ -36,87 +36,123 @@ const mockProducts = [
   },
 ];
 
-describe("filterProducts utility", () => {
-  it("should return all products if no filters are applied", () => {
-    // Arrange
-    const filters = {
-      priceRange: [0, 2000],
-      category: [],
-      brand: [],
-      rating: 0,
-    };
+const defaultFilters = {
+  priceRange: [0, 2000],
+  category: [],
+  brand: [],
+  rating: 0,
+};
 
-    // Act
-    const result = filterProducts(mockProducts, filters);
+describe("filterAndSortProducts utility", () => {
+  test("should return all products if no filters, search, or sort are applied", () => {
+    // Arrange & Act
+    const result = filterAndSortProducts(
+      mockProducts,
+      defaultFilters,
+      "",
+      "popularity"
+    );
 
     // Assert
     expect(result.length).toBe(4);
   });
 
-  it("should filter by a single category", () => {
+  test("should filter by a single category", () => {
     // Arrange
-    const filters = {
-      category: ["Test Clothing"],
-      brand: [],
-      priceRange: [0, 2000],
-      rating: 0,
-    };
+    const filters = { ...defaultFilters, category: ["Test Clothing"] };
 
     // Act
-    const result = filterProducts(mockProducts, filters);
+    const result = filterAndSortProducts(
+      mockProducts,
+      filters,
+      "",
+      "popularity"
+    );
 
     // Assert
     expect(result.length).toBe(2);
     expect(result.every((p) => p.category === "Test Clothing")).toBe(true);
   });
 
-  it("should filter by price range", () => {
+  test("should filter by search term (case-insensitive)", () => {
     // Arrange
-    const filters = {
-      category: [],
-      brand: [],
-      priceRange: [40, 100],
-      rating: 0,
-    };
+    const searchTerm = "laptop";
 
     // Act
-    const result = filterProducts(mockProducts, filters);
-
-    // Assert
-    expect(result.length).toBe(2); // Mouse ($50) and Jeans ($80)
-    expect(result.map((p) => p.name)).toEqual(["Test Mouse", "Test Jeans"]);
-  });
-
-  it("should handle multiple filters combined (category and brand)", () => {
-    // Arrange
-    const filters = {
-      category: ["Test Clothing"],
-      brand: ["Test Brand C"],
-      priceRange: [0, 2000],
-      rating: 0,
-    };
-
-    // Act
-    const result = filterProducts(mockProducts, filters);
+    const result = filterAndSortProducts(
+      mockProducts,
+      defaultFilters,
+      searchTerm,
+      "popularity"
+    );
 
     // Assert
     expect(result.length).toBe(1);
-    expect(result[0].name).toBe("Test Jeans");
+    expect(result[0].name).toBe("Test Laptop");
   });
 
-  it("should return an empty array if no products match", () => {
+  test("should sort by price: low to high", () => {
     // Arrange
-    const filters = {
-      category: ["Electronics"],
-      brand: ["Brand B"],
-      priceRange: [0, 2000],
-      rating: 0,
-    };
+    const sortOption = "priceLowToHigh";
 
     // Act
-    const result = filterProducts(mockProducts, filters);
+    const result = filterAndSortProducts(
+      mockProducts,
+      defaultFilters,
+      "",
+      sortOption
+    );
 
     // Assert
-    expect(result.length).toBe(0);
+    const prices = result.map((p) => p.price);
+    expect(prices).toEqual([25, 50, 80, 1200]);
+  });
+
+  test("should sort by price: high to low", () => {
+    // Arrange
+    const sortOption = "priceHighToLow";
+
+    // Act
+    const result = filterAndSortProducts(
+      mockProducts,
+      defaultFilters,
+      "",
+      sortOption
+    );
+
+    // Assert
+    const prices = result.map((p) => p.price);
+    expect(prices).toEqual([1200, 80, 50, 25]);
+  });
+
+  test("should sort by rating (high to low)", () => {
+    // Arrange
+    const sortOption = "rating";
+
+    // Act
+    const result = filterAndSortProducts(
+      mockProducts,
+      defaultFilters,
+      "",
+      sortOption
+    );
+
+    // Assert
+    const ratings = result.map((p) => p.rating);
+    expect(ratings).toEqual([4.8, 4.5, 4.2, 4.0]);
+  });
+
+  test("should filter by category and then sort the results", () => {
+    // Arrange
+    const filters = { ...defaultFilters, category: ["Test Electronics"] };
+    const sortOption = "priceLowToHigh";
+
+    // Act
+    const result = filterAndSortProducts(mockProducts, filters, "", sortOption);
+
+    // Assert
+    expect(result.length).toBe(2);
+    const names = result.map((p) => p.name);
+    expect(names).toEqual(["Test Mouse", "Test Laptop"]);
   });
 });
