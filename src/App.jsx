@@ -86,7 +86,7 @@ function App() {
               filterOptions={filterOptions}
               onFilterChange={handleFilterChange}
             />
-            <div className="w-full md:w-3/4 px-4 pt-2">
+            <div className="w-full md:w-3/4 px-4">
               <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-6">
                 <SearchFilter
                   searchTerm={searchTerm}
