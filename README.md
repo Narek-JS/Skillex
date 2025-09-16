@@ -8,7 +8,7 @@ A feature-complete, performant, and responsive product catalog filtering applica
 
 ### 🔗 Important Links
 
-- **Live Demo:** [https://skillex-private.vercel.app](https://skillex-private.vercel.app)
+- **Live Demo:** [https://task-skillex.vercel.app](https://task-skillex.vercel.app)
 - **UI/UX Design Prototype (Uizard):** [https://app.uizard.io/p/d1f7c71d/overview](https://app.uizard.io/p/d1f7c71d/overview)
 
 ---
